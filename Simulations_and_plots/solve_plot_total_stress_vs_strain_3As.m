@@ -192,16 +192,6 @@ if strcmp(dim,'dim')
     A = par_dim.Ef*A;
 end
 
-% NCM and fibril components
-% Calculate effective fibril and NCM strain
-[e_f1,e_m1] = calc_fibril_matrix_strain(Phis_u1,params_u);
-[e_f2,e_m2] = calc_fibril_matrix_strain(Phis_u2,params_u);
-% Calculate effective fibril and NCM stress (linear)
-[s_f1,s_m1] = calc_fibril_matrix_stress(Phis_u1,params_u,dim);
-[s_f2,s_m2] = calc_fibril_matrix_stress(Phis_u2,params_u,dim);
-
-% Averages
-c = params_u.c;
 % Calculate average tendon stress and strain
 [s_u_T1,~] = calc_av_stress_strain(Zs,Ss_u1,Phis_u1);
 [s_u_T2,~] = calc_av_stress_strain(Zs,Ss_u2,Phis_u2);
@@ -209,13 +199,6 @@ e_u_T1 = -Uss_u1(:,1); e_u_T2 = -Uss_u2(:,1);
 [s_n_T1,~] = calc_av_stress_strain(Zs,Ss_n1,Phis_n1);
 [s_n_T2,~] = calc_av_stress_strain(Zs,Ss_n2,Phis_n2);
 e_n_T1 = -Uss_n1(:,1); e_n_T2 = -Uss_n2(:,1);
-% Calculate average fibril stress and strain
-[s_u_f1,e_u_f1] = calc_av_stress_strain(Zs,s_f1,e_f1);
-[s_u_f2,e_u_f2] = calc_av_stress_strain(Zs,s_f2,e_f2);
-% Calculate average NCM stress and strain
-[s_u_m1,~] = calc_av_stress_strain(Zs,s_m1,e_m1);
-[s_u_m2,~] = calc_av_stress_strain(Zs,s_m2,e_m2);
-e_u_m1 = -(1-c)*Uss_u1(:,1); e_u_m2 = -(1-c)*Uss_u2(:,1);
 
 % Axis 1
 ax1 = axes('Units','centimeters','InnerPosition',[1 1.1 4 3.5]);
@@ -266,16 +249,6 @@ if strcmp(dim,'dim')
     A = par_dim.Ef*A;
 end
 
-% NCM and fibril components
-% Calculate effective fibril and NCM strain
-[e_f1,e_m1] = calc_fibril_matrix_strain(Phis_u1,params_u);
-[e_f2,e_m2] = calc_fibril_matrix_strain(Phis_u2,params_u);
-% Calculate effective fibril and NCM stress (linear)
-[s_f1,s_m1] = calc_fibril_matrix_stress(Phis_u1,params_u,dim);
-[s_f2,s_m2] = calc_fibril_matrix_stress(Phis_u2,params_u,dim);
-
-% Averages
-c = params_u.c;
 % Calculate average tendon stress and strain
 [s_u_T1,~] = calc_av_stress_strain(Zs,Ss_u1,Phis_u1);
 [s_u_T2,~] = calc_av_stress_strain(Zs,Ss_u2,Phis_u2);
@@ -283,13 +256,6 @@ e_u_T1 = -Uss_u1(:,1); e_u_T2 = -Uss_u2(:,1);
 [s_n_T1,~] = calc_av_stress_strain(Zs,Ss_n1,Phis_n1);
 [s_n_T2,~] = calc_av_stress_strain(Zs,Ss_n2,Phis_n2);
 e_n_T1 = -Uss_n1(:,1); e_n_T2 = -Uss_n2(:,1);
-% Calculate average fibril stress and strain
-[s_u_f1,e_u_f1] = calc_av_stress_strain(Zs,s_f1,e_f1);
-[s_u_f2,e_u_f2] = calc_av_stress_strain(Zs,s_f2,e_f2);
-% Calculate average NCM stress and strain
-[s_u_m1,~] = calc_av_stress_strain(Zs,s_m1,e_m1);
-[s_u_m2,~] = calc_av_stress_strain(Zs,s_m2,e_m2);
-e_u_m1 = -(1-c)*Uss_u1(:,1); e_u_m2 = -(1-c)*Uss_u2(:,1);
 
 % Axis 2
 ax2 = axes('Units','centimeters','InnerPosition',[7 1.1 4 3.5]);
@@ -338,16 +304,6 @@ if strcmp(dim,'dim')
     A = par_dim.Ef*A;
 end
 
-% NCM and fibril components
-% Calculate effective fibril and NCM strain
-[e_f1,e_m1] = calc_fibril_matrix_strain(Phis_u1,params_u);
-[e_f2,e_m2] = calc_fibril_matrix_strain(Phis_u2,params_u);
-% Calculate effective fibril and NCM stress (linear)
-[s_f1,s_m1] = calc_fibril_matrix_stress(Phis_u1,params_u,dim);
-[s_f2,s_m2] = calc_fibril_matrix_stress(Phis_u2,params_u,dim);
-
-% Averages
-c = params_u.c;
 % Calculate average tendon stress and strain
 [s_u_T1,~] = calc_av_stress_strain(Zs,Ss_u1,Phis_u1);
 [s_u_T2,~] = calc_av_stress_strain(Zs,Ss_u2,Phis_u2);
@@ -355,13 +311,6 @@ e_u_T1 = -Uss_u1(:,1); e_u_T2 = -Uss_u2(:,1);
 [s_n_T1,~] = calc_av_stress_strain(Zs,Ss_n1,Phis_n1);
 [s_n_T2,~] = calc_av_stress_strain(Zs,Ss_n2,Phis_n2);
 e_n_T1 = -Uss_n1(:,1); e_n_T2 = -Uss_n2(:,1);
-% Calculate average fibril stress and strain
-[s_u_f1,e_u_f1] = calc_av_stress_strain(Zs,s_f1,e_f1);
-[s_u_f2,e_u_f2] = calc_av_stress_strain(Zs,s_f2,e_f2);
-% Calculate average NCM stress and strain
-[s_u_m1,~] = calc_av_stress_strain(Zs,s_m1,e_m1);
-[s_u_m2,~] = calc_av_stress_strain(Zs,s_m2,e_m2);
-e_u_m1 = -(1-c)*Uss_u1(:,1); e_u_m2 = -(1-c)*Uss_u2(:,1);
 
 % Axis 3
 ax3 = axes('Units','centimeters','InnerPosition',[13 1.1 4 3.5]);
@@ -377,7 +326,7 @@ plot(e_u_T1/Phistar_u,s_u_T1/A,'LineWidth',1.5,'Color',cmap(13,:));
 % plot(e_u_T1/Phistar_u,s_u_f1/A,'LineWidth',1.5,'Color',cmap(9,:));
 
 % Unloading
-plot(e_u_T2/Phistar_u,s_u_f2/A,'LineWidth',1.5,'Color',cmap(20,:),'LineStyle','--');
+plot(e_n_T2/Phistar_n,s_n_T2/A,'LineWidth',1.5,'Color',cmap(20,:),'LineStyle','--');
 % plot(e_u_T2/Phistar_u,s_u_m2/A,'LineWidth',1.5,'Color',cmap(20,:),'LineStyle','--')
 plot(e_u_T2/Phistar_u,s_u_T2/A,'LineWidth',1.5,'Color',cmap(14,:),'LineStyle','--');
 % plot(e_n_T2/Phistar_n,s_n_T2/A,'LineWidth',1.5,'Color',cmap(16,:),'LineStyle','--')
